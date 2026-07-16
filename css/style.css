@@ -1,0 +1,652 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --background: #f4f7fb;
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  --primary: #4f46e5;
+  --primary-light: #eef2ff;
+  --text-dark: #111827;
+  --text: #374151;
+  --text-muted: #9ca3af;
+  --border: #e5e7eb;
+  --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  --radius: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  font-family: "Inter", sans-serif;
+  color: var(--text-dark);
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+/* MAIN APP */
+
+#bodySection {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.weather-app {
+  max-width: 1400px;
+  min-height: 850px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+}
+
+/* PANELS */
+
+.main-panel,
+.forecast-panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.main-panel {
+  padding: 36px;
+}
+
+.forecast-panel {
+  padding: 32px;
+}
+
+/* HEADER */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.app-header h1 {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* LOCATION BUTTON */
+
+.locationbtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.locationbtn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* SEARCH */
+
+.search-section {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+#searchContainer {
+  position: relative;
+  flex: 1;
+}
+
+#searchinput {
+  width: 100%;
+  height: 52px;
+  padding: 0 20px 0 48px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  outline: none;
+  background: var(--surface-soft);
+  color: var(--text-dark);
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+#searchinput:focus {
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+#searchbtn {
+  height: 52px;
+  padding: 0 26px;
+  border-radius: 14px;
+  background: var(--primary);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+#searchbtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.25);
+}
+
+/* CURRENT WEATHER */
+
+.current-weather {
+  padding: 32px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+.weather-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.weather-heading h2 {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.weather-status-icon {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.weather-status-icon img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+/* TEMPERATURE */
+
+.temperature-section {
+  margin-top: 30px;
+}
+
+.temperature-section h1 {
+  font-size: 82px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -5px;
+}
+
+.degree {
+  font-size: 32px;
+  vertical-align: top;
+  letter-spacing: 0;
+}
+
+.date-info {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.separator {
+  color: var(--primary);
+}
+
+/* LOCATION */
+
+.location-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.location-info i {
+  color: var(--primary);
+}
+
+/* WEATHER DETAILS */
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: white;
+}
+
+.info-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  font-size: 20px;
+}
+
+.pressure-icon {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.wind-icon {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.humidity-icon {
+  background: #ecfeff;
+  color: #0891b2;
+}
+
+.info-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.info-card h3 {
+  font-size: 18px;
+}
+
+.info-card small {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* FORECAST */
+
+.forecast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.forecast-header h2 {
+  font-size: 24px;
+}
+
+.forecast-header > i {
+  color: var(--primary);
+  font-size: 22px;
+}
+
+/* FORECAST CARDS */
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-soft);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--primary);
+  transform: translateX(4px);
+}
+
+.card .date {
+  display: flex;
+  flex-direction: column;
+  min-width: 55px;
+}
+
+.card .day {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card .weekday {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.card h3:first-child {
+  color: #ef4444;
+}
+
+.card h3:last-child {
+  color: #3b82f6;
+}
+
+/* CHART */
+
+#chartjs {
+  margin-top: 28px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: white;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-header h2 {
+  font-size: 18px;
+}
+
+.chart-header > i {
+  color: var(--primary);
+  font-size: 22px;
+}
+
+.mychartparent {
+  height: 220px;
+}
+
+/* ERROR */
+
+.error {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.96);
+  text-align: center;
+}
+
+.error.hide {
+  display: none;
+}
+
+.error-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: #fee2e2;
+  color: #ef4444;
+  font-size: 34px;
+}
+
+.error h2 {
+  margin-bottom: 10px;
+}
+
+.error p {
+  max-width: 350px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* FLOATING BUTTON */
+
+.floatingbtn {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  z-index: 10;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 22px;
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.3);
+  transition: 0.2s ease;
+}
+
+.floatingbtn:hover {
+  transform: translateY(-4px) rotate(10deg);
+}
+
+/* CHAT BUTTON */
+
+.chat-container {
+  position: fixed;
+  right: 28px;
+  bottom: 100px;
+  z-index: 20;
+}
+
+.chatbtn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #111827;
+  color: white;
+  font-size: 22px;
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.2);
+}
+
+/* CHAT BOX */
+
+.chatbox {
+  position: absolute;
+  right: 0;
+  bottom: 70px;
+  width: 360px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.2);
+  display: none;
+}
+
+.chatbox.active {
+  display: block;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  background: #111827;
+  color: white;
+}
+
+.chat-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.assistant-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: var(--primary);
+}
+
+.chat-title strong {
+  display: block;
+  font-size: 13px;
+}
+
+.chat-title small {
+  display: block;
+  margin-top: 4px;
+  color: #9ca3af;
+  font-size: 11px;
+}
+
+.closechat {
+  background: transparent;
+  color: white;
+  font-size: 18px;
+}
+
+.chatbody {
+  height: 300px;
+  overflow-y: auto;
+  padding: 18px;
+  background: #f8fafc;
+}
+
+#placeholder {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: white;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.chatinput {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.chatinput input {
+  flex: 1;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+}
+
+.chatinput button {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: white;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  #bodySection {
+    padding: 20px;
+  }
+
+  .weather-app {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-panel,
+  .forecast-panel {
+    padding: 20px;
+  }
+
+  .app-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .search-section {
+    flex-direction: column;
+  }
+
+  #searchbtn {
+    width: 100%;
+  }
+
+  .weather-details {
+    grid-template-columns: 1fr;
+  }
+
+  .temperature-section h1 {
+    font-size: 64px;
+  }
+
+  .chatbox {
+    right: -10px;
+    width: calc(100vw - 40px);
+  }
+}
