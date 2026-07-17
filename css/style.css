@@ -650,3 +650,89 @@ button {
     width: calc(100vw - 40px);
   }
 }
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.forecast-card {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+
+  padding: 14px 18px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: all 0.25s ease;
+}
+
+.forecast-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+
+  transform: translateX(4px);
+}
+
+/* DATE */
+
+.forecast-date {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.forecast-date strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.forecast-date span {
+  font-size: 12px;
+
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* WEATHER */
+
+.forecast-weather {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.forecast-weather img {
+  width: 48px;
+  height: 48px;
+}
+
+.forecast-weather span {
+  font-size: 14px;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* TEMPERATURE */
+
+.forecast-temperature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.forecast-temperature strong {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.forecast-temperature span {
+  font-size: 15px;
+
+  color: rgba(255, 255, 255, 0.4);
+}
