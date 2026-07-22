@@ -46,11 +46,60 @@ function formattedDate(date) {
   );
 }
 
-searchbtn.addEventListener("click", function () {
-  city = document.getElementById("searchinput").value;
-  LoadBase();
-  forecast();
+function debounce(func, delay) {
+  let timer;
+
+  return function (...args) {
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+}
+var searchinput = document.getElementById("searchinput");
+var suggestion = document.getElementById("suggestion");
+let debounceSearch = debounce(searchCity, 2000);
+searchinput.addEventListener("input", function (e) {
+  debounceSearch(e.target.value);
 });
+// searchinput.addEventListener("keydown", function () {
+//   debounceLoad();
+//   // LoadBase();
+//   forecast();
+// });
+
+function searchCity(value) {
+  if (value.trim() == "") {
+    suggestion.innerHTML = `
+        <div class="suggest-empty">
+          No city found
+        </div>
+      `;
+
+    return;
+  }
+  fetch(`${BaseURL}/search.json?key=${apiKey}&q=${value}`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      suggestion.innerText = "";
+      res.forEach((c) => {
+        let div = document.createElement("div");
+        div.classList.add("suggest-item");
+        div.innerHTML = `${c.name} , ${c.country}`;
+        div.addEventListener("click", function () {
+          searchinput.value = c.name;
+          suggestion.innerHTML = "";
+          window.city = city.name;
+          LoadBase();
+          forecast();
+        });
+        suggestion.append(div);
+      });
+    });
+}
 
 function UpdateUI(res) {
   cityname.innerText = res.location.name;
@@ -69,7 +118,7 @@ function forecast() {
       return res.json();
     })
     .then((data) => {
-      UpdateUI(data);
+      // UpdateUI(data);
       CreateForecast(data);
     });
   function CreateForecast(data) {

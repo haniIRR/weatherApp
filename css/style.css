@@ -736,3 +736,57 @@ button {
 
   color: rgba(255, 255, 255, 0.4);
 }
+
+#searchContainer {
+  position: relative;
+  width: 100%;
+}
+
+#suggestion {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* هر آیتم شهر */
+.suggest-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 15px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+/* آیکن قبل از اسم شهر */
+.suggest-item::before {
+  content: "📍";
+  font-size: 14px;
+}
+
+/* hover */
+.suggest-item:hover {
+  background: #f0f7ff;
+  color: #2563eb;
+  padding-left: 22px;
+}
+
+/* scrollbar */
+#suggestion::-webkit-scrollbar {
+  width: 6px;
+}
+
+#suggestion::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
